@@ -1,0 +1,9 @@
+{
+  "name": "Consentify",
+  "description": "User Consent Tracking and Privacy Management System. Monitor and control app permissions with Material Design 3.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

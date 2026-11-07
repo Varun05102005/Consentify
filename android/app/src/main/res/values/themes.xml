@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.Consentify" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/navy</item>
+        <item name="android:navigationBarColor">@color/canvas</item>
+        <item name="android:windowBackground">@color/canvas</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

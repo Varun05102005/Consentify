@@ -1,0 +1,6 @@
+<resources>
+    <color name="navy">#1E3A8A</color>
+    <color name="navy_soft">#E8EEF8</color>
+    <color name="canvas">#F3F5F8</color>
+    <color name="on_accent">#F8FAFC</color>
+</resources>

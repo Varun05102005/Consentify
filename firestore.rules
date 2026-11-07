@@ -1,0 +1,66 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Clients may write owner-scoped app/alert metadata (including status,
+    // createdAt, updatedAt, and the stored `risk` label). Those fields are
+    // not authorization material: riskEngine recalculates scores from
+    // permission facts, and path access is always request.auth.uid.
+    // Reject credential/secret field names so they cannot be persisted.
+    function hasNoSecretFields() {
+      return !request.resource.data.keys().hasAny([
+        'password',
+        'idToken',
+        'refreshToken',
+        'accessToken',
+        'GEMINI_API_KEY',
+        'apiKey',
+        'privateKey'
+      ]);
+    }
+
+    // Deny-by-default: no document is readable or writable unless a more
+    // specific rule below grants access.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+
+      allow create, update: if isOwner(userId)
+        && request.resource.data.uid == userId
+        && hasNoSecretFields();
+
+      allow delete: if isOwner(userId);
+
+      match /apps/{appId} {
+        allow read: if isOwner(userId);
+
+        allow create, update: if isOwner(userId)
+          && request.resource.data.ownerUid == userId
+          && hasNoSecretFields();
+
+        allow delete: if isOwner(userId);
+      }
+
+      match /alerts/{alertId} {
+        allow read: if isOwner(userId);
+
+        allow create, update: if isOwner(userId)
+          && request.resource.data.ownerUid == userId
+          && hasNoSecretFields();
+
+        allow delete: if isOwner(userId);
+      }
+    }
+  }
+}

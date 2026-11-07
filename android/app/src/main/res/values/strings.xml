@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Consentify</string>
+    <string name="brand_mark">C</string>
+    <string name="shell_subtitle">Privacy Scanner</string>
+    <string name="signed_in">Signed in</string>
+    <string name="email_label">Email</string>
+    <string name="password_label">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="scan_applications">Scan Applications</string>
+    <string name="scanner_explanation">Review the permissions requested by apps installed on this device.</string>
+    <string name="scanning_apps">Scanning applications…</string>
+    <string name="scanning_apps_cd">Scanning applications. This may take a moment.</string>
+    <string name="uploading_scan">Uploading scan…</string>
+    <string name="uploading_scan_cd">Uploading scan results. This may take a moment.</string>
+    <string name="scan_complete">Scan Complete</string>
+    <string name="scan_complete_body">Consentify can now analyze these permission facts.</string>
+    <string name="apps_scanned">Applications scanned</string>
+    <string name="apps_with_permissions">Apps with mapped permissions</string>
+    <string name="permission_facts">Mapped permission facts</string>
+    <string name="apps_uploaded">Applications uploaded</string>
+    <string name="apps_marked_removed">Marked removed</string>
+    <string name="apps_restored">Restored</string>
+    <string name="scan_again">Scan Again</string>
+    <string name="retry_upload">Retry Upload</string>
+    <string name="no_apps_found">No applications found</string>
+    <string name="no_apps_found_body">Consentify scans user-facing launcher applications that Android exposes to this app. Other packages on the device are not listed.</string>
+    <string name="sign_in_to_sync">Sign in to sync your scan</string>
+</resources>
